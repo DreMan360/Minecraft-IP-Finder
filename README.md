@@ -1,5 +1,5 @@
 # Minecraft-IP-Finder
-A discord bot that can find Minecraft server IPs
+A Discord bot that can find Minecraft server IPs
 
 # Install requirements
 Clone the repo, CD into the directory, and run `pip install -r requirements.txt`
