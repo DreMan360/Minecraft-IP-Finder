@@ -14618,7 +14618,7 @@
             "transport": "tcp",
             "location": {
                 "city": "Iwaki",
-                "region_code": null,
+                "region_code": null
                 "area_code": null,
                 "longitude": 140.88333,
                 "country_name": "Japan",
