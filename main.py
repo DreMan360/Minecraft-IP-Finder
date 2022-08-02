@@ -3,12 +3,9 @@ __version__ = '08-02-2022' #thought an update date would be better
 
 
 import shodan
-import sys
-from mcstatus import JavaServer
 import json
 import nextcord     
 from nextcord.ext import commands
-import os
 from random import randint
 import asyncio
 
@@ -18,17 +15,11 @@ intents = nextcord.Intents.all()
 client = commands.Bot(command_prefix='.', intents=intents)
 intents.members = True
 
-ApiKey = 'mTQ3tJxqlDdwD16I8omn4y24GjSQrosH' # Add your shodan API key
-botToken = 'OTkwMTUwNDM0OTA1ODAwNzQ1.GSO2Aa.qkkzycfI8tkA2Kh9eao8jD3CmBhumubmBWbVac' # Add your discord bot token
+ApiKey = '' # Add your shodan API key
+botToken = '' # Add your discord bot token
 
 
 api = shodan.Shodan(ApiKey)
-
-
-@client.command()
-async def test(ctx):
-    await ctx.reply('hi')
-    print(ctx.author.id)
 
 
 
@@ -37,132 +28,6 @@ def get_data():
         users = json.load(f)
 
     return users
-
-
-
-
-def testRun():
-    users = get_data()
-
-
-
-    theList = list((users["matches"][8]).values())
-
-
-    print(theList[14])
-    print(theList[10])
-
-    server = JavaServer.lookup('52.52.131.116')
-
-    response = server.status()
-
-    if response.players.sample is not None:
-        player_sample = str([f"{player.name} ({player.id})" for player in response.players.sample])
-    else:
-        player_sample = "No players online"
-
-    all_players = str(player_sample)
-
-    player1 = all_players.split("['")[1]
-
-    print(player1.split(' (')[0])
-
-    print(player_sample)
-
-    
-    # my_string=str(theList)
-    # print(my_string.split('"ip_str:"',1)[1])
-
-
-def anotherTest():
-    users = get_data()
-
-
-    out_file = open("sample.json", "w")
-
-    json.dump(api.search('minecraft'), out_file, indent = 4)
-
-    out_file.close()
-
-
-
-# @client.command()
-# async def devtest(ctx, name):
-#     if ctx.author.id == 579494409725411329:
-#         loopThis(name)
-#     else:
-#         await ctx.reply("NO")
-
-
-def loopThis(player):
-    users = get_data()
-    loopvar = 0
-    while loopvar >= 0 and loopvar <= 99:
-        print(i)
-        theList = list((users["matches"][loopvar]).values())
-        if theList[-1] != [] and '.' in theList[-1] and '.' in theList[12]:
-            print('Solution 1')
-            print(theList[8])
-            server = JavaServer.lookup(str(theList[-1]))
-            response = server.status()
-            
-            if response.players.sample == None:
-                print("no players")
-            else:
-                if player in response.players.sample:
-                    print("player is on"+str(theList[-1]))
-                    break
-                else: 
-                    print(response.players.sample)
-
-
-
-
-
-        elif theList[14] != [] and '.' in theList[14] and '1' in theList[10] and "Bedrock" not in theList[2]:
-            print('Solution 2')
-            print(theList[14])
-            server = JavaServer.lookup(str(theList[14]))
-            response = server.status()
-
-            if response.players.sample == None:
-                print("no players")
-            else:
-                if player in response.players.sample:
-                    print(theList[15])
-                    break
-                else: 
-                    print("no players")
-
-        elif theList[15] != [] and '.' in theList[15] and '1' in theList[11] and "Bedrock" not in theList[11]:
-            print('Solution 3')
-            print(theList[15])
-            server = JavaServer.lookup(str(theList[15]))
-            response = server.status()    
-
-            if response.players.sample == None:
-                print("no players")
-            else:
-                if player in response.players.sample:
-                    print(theList[15])
-                    break
-                else: 
-                    print("no players")
-
-
-        
-        loopvar = loopvar+1
-
-        if loopvar == 98:
-            out_file = open("sample.json", "w")
-            json.dump(api.search('minecraft'), out_file, indent = 4)
-            
-            out_file.close()
-
-            loopvar = 0
-
-
-
 
 
 def get_count_data():
