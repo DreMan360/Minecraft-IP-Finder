@@ -1,4 +1,4 @@
-# Minecraft-IP-Finder
+# Minecraft-IP-Finder - Copenheimer But Worse
 A Discord bot that can find Minecraft server IPs
 
 # Install requirements
